@@ -53,7 +53,7 @@ while loopy:
     stat = input("Enter what stat ID do you want to forecast for: ")
     url = f"https://www.nationstates.net/cgi-bin/api.cgi?q=censusname;scale={stat}"
     info = api_calls(url)
-    info = info.strip('<WORLD>\n<CENSUS id="').strip(str(stat)).strip('">').strip('</CENSUS>\n</WORLD>')
+    info = info.replace('<WORLD>\n<CENSUS id="','').replace(str(stat),'').replace('">','').replace('</CENSUS>\n</WORLD>','')
 
     skip = input("Is " + info + " the stat you want to forecast y/n\n")
     if skip == 'y':
